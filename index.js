@@ -7,7 +7,7 @@ var server = http.createServer(atenderServidor)
 
 console.log("servidor iniciado")
 
-server.listen(8088);
+server.listen(process.env.PORT || 5000);
 
 function atenderServidor (request, response){
 	if (request.url == "/fecha"){
@@ -22,7 +22,7 @@ function atenderServidor (request, response){
 
 
 function retornarArchivo(request, response){
-	fs.readFile("." + request.url, archivoListo)
+	fs.readFile(__dirname + request.url, archivoListo)
 	console.log("solicitado: "+request.url)
 
 	function archivoListo(error, data){
